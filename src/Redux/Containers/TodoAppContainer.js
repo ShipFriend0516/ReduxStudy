@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addTodoAction, removeTodoAction, removeAllAction } from "../actions";
+import { addTodoAction, removeTodoAction, removeAllAction } from "../Ducks/TodoDuck";
 
 import TodoApp from "../../Components/TodoApp";
 
