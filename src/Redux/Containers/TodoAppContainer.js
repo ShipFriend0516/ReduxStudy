@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 // import { addTodoAction, removeTodoAction, removeAllAction } from "../Ducks/TodoDuck";
-
+import addTodoThunkActionCreator from "../Thunk/addTodoThunk";
 import {
   addTodo as addTodoActionCreator,
   removeTodo as removeTodoActionCreator,
@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTodo: (text) => {
-      dispatch(addTodoActionCreator(text));
+      dispatch(addTodoThunkActionCreator(text));
     },
     removeTodo: () => {
       dispatch(removeTodoActionCreator());
