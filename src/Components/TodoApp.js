@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const TodoApp = (props) => {
-  const { todoItems, addTodo, removeTodo, removeAll } = props;
+  const { todoItems, addTodo, removeTodo, removeAll, triggerAsyncFunction } = props;
   const [newTodo, setNewTodo] = useState("");
 
   return (
@@ -45,6 +45,25 @@ const TodoApp = (props) => {
         <button onClick={removeTodo}>Remove To-Do</button>
         <button onClick={removeAll}>Remove All To-Do</button>
         <button>State Logging</button>
+        <button
+          onClick={() => {
+            triggerAsyncFunction((dispatch, getState) => {
+              console.log("비동기 함수 실행", getState());
+
+              new Promise((resolve, reject) => {
+                setTimeout(resolve, 3000);
+              })
+                .then(() => {
+                  console.log("비도기 함수 성공", getState());
+                })
+                .finally(() => {
+                  console.log("비동기 함수 종료", getState());
+                });
+            });
+          }}
+        >
+          비동기 함수 테스트
+        </button>
       </div>
 
       <h3>메모</h3>
