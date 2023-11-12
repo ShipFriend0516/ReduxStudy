@@ -1,5 +1,11 @@
 import { connect } from "react-redux";
-import { addTodoAction, removeTodoAction, removeAllAction } from "../Ducks/TodoDuck";
+// import { addTodoAction, removeTodoAction, removeAllAction } from "../Ducks/TodoDuck";
+
+import {
+  addTodo as addTodoActionCreator,
+  removeTodo as removeTodoActionCreator,
+  removeAll as removeAllActionCreator,
+} from "../Actions/TodoAction";
 
 import TodoApp from "../../Components/TodoApp";
 
@@ -12,13 +18,16 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTodo: (text) => {
-      dispatch(addTodoAction(text));
+      dispatch(addTodoActionCreator(text));
     },
     removeTodo: () => {
-      dispatch(removeTodoAction());
+      dispatch(removeTodoActionCreator());
     },
     removeAll: () => {
-      dispatch(removeAllAction());
+      dispatch(removeAllActionCreator());
+    },
+    triggerAsyncFunction: (asyncFunction) => {
+      dispatch(asyncFunction);
     },
   };
 };
